@@ -1,0 +1,26 @@
+// Prisma schema for the SSE 2026 Conference
+// Run: npx prisma db push   (to apply schema to your DB)
+// Run: npx prisma generate  (to regenerate the Prisma client)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Registration {
+  id                String   @id @default(cuid())
+  name              String
+  email             String   @unique
+  phone             String
+  institution       String
+  presentationType  String   @default("attendee")
+  theme             String?
+  presentationTitle String?
+  createdAt         DateTime @default(now())
+
+  @@map("registrations")
+}

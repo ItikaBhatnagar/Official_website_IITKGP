@@ -1,0 +1,22 @@
+{
+  "name": "sse-conference-2026",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"API,WEB\" -c \"cyan,green\" \"npm run dev --workspace=apps/api-server\" \"npm run dev --workspace=apps/conference\"",
+    "dev:api": "npm run dev --workspace=apps/api-server",
+    "dev:web": "npm run dev --workspace=apps/conference",
+    "build": "npm run build --workspace=apps/conference && npm run db:generate --workspace=packages/db",
+    "start": "npm run start --workspace=apps/api-server",
+    "db:push": "npm run db:push --workspace=packages/db",
+    "db:generate": "npm run db:generate --workspace=packages/db",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
