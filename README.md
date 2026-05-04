@@ -45,15 +45,6 @@ CREATE DATABASE conference_db;
 # Then update DATABASE_URL with your PostgreSQL credentials
 ```
 
-`apps/api-server/.env` contents:
-```env
-DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/conference_db
-PORT=5000
-ADMIN_PASSWORD=admin123
-ADMIN_KEY=conf2026admin
-FRONTEND_URL=http://localhost:5173
-```
-
 `packages/db/.env` contents (same DATABASE_URL):
 ```env
 DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/conference_db
@@ -83,7 +74,7 @@ npm run dev
 That's it! Open your browser at:
 - **Frontend:** http://localhost:5173
 - **Backend API:** http://localhost:5000/api/healthz
-- **Admin dashboard:** Click "Admin Portal" in the footer (password: `iitkgp_professor_admin`)
+- **Admin dashboard:** Click "Admin Portal" in the footer
 
 ---
 
@@ -99,14 +90,6 @@ npm run dev:web
 
 ---
 
-## API Reference
-
-| Method | Endpoint                                      | Description              |
-|--------|-----------------------------------------------|--------------------------|
-| GET    | `/api/healthz`                                | Health check             |
-| POST   | `/api/register`                               | Submit registration      |
-| GET    | `/api/registrations?adminKey=conf2026admin`   | List all registrations   |
-| POST   | `/api/admin/login`                            | Get admin key            |
 
 ### POST /api/register — Request body
 ```json
